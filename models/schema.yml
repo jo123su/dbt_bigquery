@@ -6,21 +6,44 @@ sources:
     tables:
       - name: product
         identifier: raw_gz_product
+        description: tabla de los productos de greenweez
         columns:
-          - name: product_id
+          - name: products_id
+            description: ID del producto
+            tests:
+              - unique
+              - not_null
           - name: purchSE_PRICE
+            description: precio de compra al consumidor
       - name: sales
         identifier: raw_gz_sales
+        description: tabla de ventas de greenweez
         columns:
           - name: date_date
+            description: fecha de cuando se realizo la venta 
           - name: orders_id
+            description: ID de la orden
           - name: pdt_id
+            description: ID del producto 
           - name: revenue
+            description: monto de ingreso
           - name: quantity
+            description: cantidad vendida
+        tests:
+          - unique:
+              column_name: "(date_date || '-' || orders_id || '-' ||pdt_id)"
       - name: ship
         identifier: raw_gz_ship
+        description: tabla de los costos de envío por orden en greenweez
         columns:
           - name: orders_id
+            description: ID de la orden
+            tests:
+              - unique
+              - not_null
           - name: shipping_fee
-          - name: shipping_fee_1
+            description: Monto de costo del envío
           - name: logCost
+            description: costo logístico de la orden
+          - name: ship_cost
+            description: costo del trasporte a destinno de la orden
