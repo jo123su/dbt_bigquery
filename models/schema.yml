@@ -48,7 +48,7 @@ sources:
           - name: ship_cost
             description: costo del trasporte a destinno de la orden
 
- models:
+models:
    - name: int_sales_margin
      description: margin calculation per order
      columns:
@@ -83,12 +83,6 @@ sources:
      tests:
        - unique:
            column_name: "(orders_id || '-' || products_id)"
-
- models:
-   # Staging #
-   # ...snip...
-
-   # Intermediate #
    - name: int_orders_margin
      description: margin calculation per order
      columns:
